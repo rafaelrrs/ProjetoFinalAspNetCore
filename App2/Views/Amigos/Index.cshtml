@@ -1,0 +1,41 @@
+﻿@model List<Amigo>
+
+
+<a href="/amigos/cadastro" class="btn btn-primary" role="button" aria-pressed="true">Cadastrar novo amigo</a>
+<br />
+<br />
+<form action="/amigos" method="get">
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" placeholder="Nome do amigo" name="nome">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Aniversário</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var amigo in Model)
+        {   <tr>
+                <th scope="row">@amigo.Id</th>
+                <td>@amigo.Nome</td>
+                <td>@amigo.Email</td>
+                <td>@amigo.Aniversario</td>
+                <td>
+                    <a href="/amigos/editar?id=@amigo.Id" class="btn btn-info" role="button" aria-pressed="true">Editar</a>
+                    <a href="/amigos/excluir?id=@amigo.Id" class="btn btn-danger" role="button" aria-pressed="true">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

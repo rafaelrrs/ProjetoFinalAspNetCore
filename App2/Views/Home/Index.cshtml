@@ -1,0 +1,64 @@
+﻿@model List<Amigo>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    var listaOrdenada = Model;
+}
+<br />
+<br />
+<div class="text-center">
+    <h1 class="display-4">Gerenciador de Aniversário</h1>
+</div>
+
+<h3>Aniversariante do dia @DateTime.Today</h3>
+
+<table class="table">
+    <thead>
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var amigo in listaOrdenada)
+        {
+            if (@amigo.Aniversario == DateTime.Today)
+            {
+                <tr>
+                    <td>@amigo.Nome</td>
+                    <td>@amigo.Email</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<br />
+<br />
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Aniversário</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var amigo in listaOrdenada)
+        {
+            <tr>
+                <td>@amigo.Id</td>
+                <td>@amigo.Nome</td>
+                <td>@amigo.Email</td>
+                <td>@amigo.Aniversario</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
